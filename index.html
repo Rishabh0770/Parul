@@ -94,23 +94,54 @@ musicBtn.addEventListener('click', () => {
 });
 </script>
             </div>
+
             <div class="right">
-                <div class="box__account">
-                    <div class="image">
-                        <img src="./images/parul.jpg" alt="">
-                    </div>
-                    <div class="name">
-                        <i class="fa-solid fa-heart"></i>
-                        <span>Miss Parul Sharma</span>
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="balloon_one">
-                        <img width="100px" src="./images/balloon1.png" alt="">
-                    </div>
-                    <div class="balloon_two">
-                        <img width="100px" src="./images/balloon2.png" alt="">
-                    </div>
-                </div>
+<div class="box__account">
+  <div class="image">
+    <!-- Video -->
+    <video id="myVideo" autoplay loop muted playsinline>
+      <source src="./parul.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Hidden Image (for fallback when PiP active) -->
+    <img id="fallbackImg" src="./images/parul.jpg" alt="Parul">
+  </div>
+
+  <div class="name">
+    <i class="fa-solid fa-heart"></i>
+    <span>Miss Parul Sharma</span>
+    <i class="fa-solid fa-heart"></i>
+  </div>
+
+  <div class="balloon_one">
+    <img width="100px" src="./images/balloon1.png" alt="">
+  </div>
+  <div class="balloon_two">
+    <img width="100px" src="./images/balloon2.png" alt="">
+  </div>
+</div>
+
+
+
+<script>
+const video = document.getElementById("myVideo");
+const img = document.getElementById("fallbackImg");
+
+// When PiP starts → fade video out, fade image in
+video.addEventListener("enterpictureinpicture", () => {
+  video.style.opacity = "0";   // hide video
+  img.style.opacity = "1";     // show image
+});
+
+// When PiP ends → fade image out, fade video in
+video.addEventListener("leavepictureinpicture", () => {
+  img.style.opacity = "0";     // hide image
+  video.style.opacity = "1";   // show video again
+});
+</script>
+
+
                 <a href="impressingCrush-main/index.html" class="circle-link">
     <div class="cricle">
         <div class="text__cricle">
@@ -170,7 +201,7 @@ musicBtn.addEventListener('click', () => {
             <div class="boxMail-container">
                 <div class="card1">
                     <div class="userImg">
-                        <img src="images/parul.jpg" alt="">
+                        <img src="images/123.jpg" alt="">
                     </div>
                     <h4 class="username">To: Parul Sharma💖<span class="underline"></span></h4>
 
@@ -285,6 +316,13 @@ function animate() {
 animate();
 
 </script>
+<!-- Footer with Heartbeat -->
+<div class="footer">
+  Created with 
+  <span class="heartbeat">❤</span> 
+  by Rishabh
+</div>
+
 </body>
 <script>
     let datetxt = "08 september";
